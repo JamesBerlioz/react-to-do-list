@@ -1,0 +1,14 @@
+@use "../util" as u;
+
+.UpperBar {
+  height: 80px;
+
+  border-bottom: 2px solid rgba(70, 39, 48, 0.8);
+  background-color: u.$dark-900;
+
+  margin: 75px 113px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

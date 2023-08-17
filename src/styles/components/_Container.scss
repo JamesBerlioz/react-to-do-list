@@ -1,0 +1,10 @@
+@use "../util" as u;
+
+.Container {
+  max-width: 1440px;
+  height: 900px;
+
+  background-color: u.$dark-900;
+
+  margin: auto;
+}

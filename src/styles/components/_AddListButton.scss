@@ -1,0 +1,20 @@
+@use "../util" as u;
+
+.AddListButton {
+  width: 205px;
+  height: 58px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  border-radius: 40px;
+  border: none;
+  background: u.$dark-900;
+}
+
+.AddListButton:hover {
+  background: u.$dark-700;
+  cursor: pointer;
+}

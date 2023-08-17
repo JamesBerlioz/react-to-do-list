@@ -1,0 +1,11 @@
+@use "../../util" as u;
+
+@mixin typography($fontSize: 16px, $fontWeight: 400, $color: u.$second-100) {
+  font-family: u.$font;
+  font-style: normal;
+  line-height: normal;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+
+  color: $color;
+}
