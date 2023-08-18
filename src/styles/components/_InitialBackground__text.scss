@@ -1,0 +1,16 @@
+@use "../util" as u;
+@use "../util/mixins" as m;
+
+.InitialBackground__text {
+  @include m.typography(20px, 400, transparent);
+
+  background-image: u.$gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.7;
+
+  position: absolute;
+
+  top: 420px;
+}

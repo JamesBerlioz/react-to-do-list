@@ -1,0 +1,13 @@
+@use "../../util/mixins" as m;
+@use "../../util" as u;
+
+.AddListModal__header {
+  @include m.typography(18px, 400);
+  border-bottom: 1px solid rgba(216, 216, 216, 0.4);
+
+  height: 65px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

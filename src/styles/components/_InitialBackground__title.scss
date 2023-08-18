@@ -1,0 +1,8 @@
+@use "../util" as u;
+@use "../util/mixins" as m;
+
+.InitialBackground__title {
+  @include m.typography(108px, 700, u.$second-200);
+
+  position: absolute;
+}
