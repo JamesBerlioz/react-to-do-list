@@ -1,5 +1,5 @@
-@use "../util" as u;
-@use "../util/mixins" as m;
+@use "../../util" as u;
+@use "../../util/mixins" as m;
 
 .InitialBackground__text {
   @include m.typography(20px, 400, transparent);

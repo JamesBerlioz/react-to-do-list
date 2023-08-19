@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface AddListModalState {
   isShown: boolean;
+  inputValue: string;
 }
 
 const initialState: AddListModalState = {
   isShown: false,
+  inputValue: "",
 };
 
 export const AddListModalSlice = createSlice({
@@ -14,14 +17,18 @@ export const AddListModalSlice = createSlice({
   reducers: {
     show: (state) => {
       state.isShown = true;
+      state.inputValue = "";
     },
     hide: (state) => {
       state.isShown = false;
+    },
+    changeValue: (state, action: PayloadAction<string>) => {
+      state.inputValue = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { show, hide } = AddListModalSlice.actions;
+export const { show, hide, changeValue } = AddListModalSlice.actions;
 
 export default AddListModalSlice.reducer;

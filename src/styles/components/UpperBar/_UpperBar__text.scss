@@ -1,5 +1,5 @@
-@use "../util" as u;
-@use "../util/mixins" as m;
+@use "../../util" as u;
+@use "../../util/mixins" as m;
 
 .UpperBar__text {
   @include m.typography(24px, 600);

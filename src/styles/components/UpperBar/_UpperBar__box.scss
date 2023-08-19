@@ -1,18 +1,14 @@
-@use "../util" as u;
+@use "../../util" as u;
 
-.UpperBar {
+.UpperBar__box {
   height: 70px;
-  width: 80%;
 
   border-bottom: 2px solid rgba(70, 39, 48, 0.8);
   background-color: u.$dark-900;
-
-  margin: 0px 150px;
-  padding-top: 50px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  position: fixed;
+  box-sizing: border-box;
 }

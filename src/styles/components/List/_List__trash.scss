@@ -1,0 +1,22 @@
+@use "../../util" as u;
+
+.List__trash {
+  width: 10px;
+  height: 60px;
+
+  background: rgba($color: u.$dark-600, $alpha: 0.6);
+  transition: 0.2s;
+
+  position: absolute;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.List__trash:hover {
+  width: 70px;
+  background: u.$dark-600;
+  cursor: pointer;
+}
