@@ -11,7 +11,7 @@ function Initial() {
   const noList = useAppSelector((state) => state.data.noList);
 
   return (
-    <>
+    <div className="Initial">
       <UpperBar />
       <Container>
         {data.length === 0 ? (
@@ -25,7 +25,7 @@ function Initial() {
         )}
       </Container>
       <AddListModal />
-    </>
+    </div>
   );
 }
 
