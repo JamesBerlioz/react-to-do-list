@@ -5,7 +5,7 @@ function ListContainer() {
   const data = useAppSelector((state) => state.data.data);
 
   return (
-    <div className="ListContainer">
+    <div className={"ListContainer"}>
       {data.map((list) => (
         <List key={list.id} id={list.id} title={list.title} />
       ))}

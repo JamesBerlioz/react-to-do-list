@@ -17,17 +17,14 @@ function Todo({
 }) {
   const dispatch = useAppDispatch();
 
-  const [isTrashActive, toggleTrashActive] = useReducer(
-    (isTrashActive) => !isTrashActive,
-    false
-  );
+  const [isTrashActive, toggleTrashActive] = useReducer((isTrashActive) => !isTrashActive, false);
 
   const toggleCheckbox = () => {
     dispatch(completeTodo({ id: id, index: index }));
   };
 
   return (
-    <section className="Todo">
+    <section className="Todo" data-testid="Todo">
       <div className="Todo__left">
         <div className="Todo__checkbox" onClick={toggleCheckbox}>
           <CheckboxIcon completed={completed} />

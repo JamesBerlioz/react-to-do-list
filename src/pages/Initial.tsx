@@ -8,12 +8,21 @@ import { useAppSelector } from "../components/hooks/reduxHook";
 
 function Initial() {
   const data = useAppSelector((state) => state.data.data);
+  const noList = useAppSelector((state) => state.data.noList);
 
   return (
     <>
       <UpperBar />
       <Container>
-        {data.length === 0 ? <InitialBackground /> : <ListContainer />}
+        {data.length === 0 ? (
+          noList ? (
+            <NoListBackground />
+          ) : (
+            <InitialBackground />
+          )
+        ) : (
+          <ListContainer />
+        )}
       </Container>
       <AddListModal />
     </>

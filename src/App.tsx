@@ -9,7 +9,6 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("data", JSON.stringify(data));
   }, [data]);
-  console.log(data);
   return (
     <>
       <Routes>

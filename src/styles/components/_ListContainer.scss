@@ -14,6 +14,8 @@
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: u.$dark-600 u.$dark-900;
+
+  overflow-x: hidden;
 }
 
 .ListContainer::-webkit-scrollbar {

@@ -57,5 +57,6 @@
   "devDependencies": {
     "@types/node": "^20.5.1",
     "@types/uuid": "^9.0.2"
-  }
+  },
+  "homepage": "."
 }

@@ -20,10 +20,12 @@ interface completeTodoTypes {
 
 export interface DataState {
   data: List[];
+  noList: boolean;
 }
 
 const initialState: DataState = {
   data: JSON.parse(window.localStorage.getItem("data") || "[]"),
+  noList: false,
 };
 
 export const DataSlice = createSlice({
@@ -38,6 +40,7 @@ export const DataSlice = createSlice({
     },
     removeTitle: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((list) => list.id !== action.payload);
+      if (state.data.length === 0) state.noList = true;
     },
     addTodo: (state, action: PayloadAction<addTodoTypes>) => {
       state.data = state.data.map((list) =>

@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import ArrowIcon from "./icons/Arrow";
 import TrashIcon from "./icons/Trash";
 import { useAppDispatch } from "./hooks/reduxHook";
@@ -9,10 +9,7 @@ function List({ id, title }: { id: string; title: string }) {
   const dispatch = useAppDispatch();
   let navigate = useNavigate();
 
-  const [isTrashShown, toggleTrashShown] = useReducer(
-    (isTrashShown) => !isTrashShown,
-    false
-  );
+  const [isTrashShown, toggleTrashShown] = useReducer((isTrashShown) => !isTrashShown, false);
 
   const [isActive, toggleActive] = useReducer((isActive) => !isActive, false);
 
@@ -21,12 +18,16 @@ function List({ id, title }: { id: string; title: string }) {
     dispatch(removeTitle(id));
   };
 
+  const [classList, setClassList] = useState("List");
+  const addMoveClass = () => setClassList(["List", "List_move"].join(" "));
+
   return (
     <section
-      className="List"
+      className={classList}
       onMouseEnter={toggleActive}
       onMouseLeave={toggleActive}
-      onClick={() => navigate(`/${id}`)}
+      onClick={addMoveClass}
+      onAnimationEnd={() => navigate(`/${id}`)}
     >
       <div
         className="List__trash"

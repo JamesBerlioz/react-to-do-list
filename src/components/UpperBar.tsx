@@ -3,14 +3,12 @@ import AddListButton from "./AddListButton";
 import AddToDoButton from "./AddToDoButton";
 import DeleteListButton from "./DeleteListButton";
 import ArroLeftIcon from "./icons/ArrowLeft";
-import { useNavigate } from "react-router-dom";
 import { List } from "../features/DataSlice";
 
-function UpperBar({ currentList }: { currentList?: List }) {
+function UpperBar({ currentList, animation }: { currentList?: List; animation?: () => void }) {
   const [isActive, setIsActive] = useState(false);
   const setActive = () => setIsActive(true);
   const setInactive = () => setIsActive(false);
-  const navigate = useNavigate();
 
   return (
     <header className="UpperBar">
@@ -26,7 +24,7 @@ function UpperBar({ currentList }: { currentList?: List }) {
               className="UpperBar__backButton"
               onMouseEnter={setActive}
               onMouseLeave={setInactive}
-              onClick={() => navigate(`/`)}
+              onClick={animation}
             >
               <ArroLeftIcon active={isActive} />
             </button>

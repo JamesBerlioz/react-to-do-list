@@ -7,12 +7,12 @@ function NoListBackground() {
       <div className="NoListBackground__img">
         <NoListBackIcon />
       </div>
-      <p className="NoListBackground__text">
+      <div className="NoListBackground__text">
         <p className="NoListBackground__leftText">Start creating lists</p>
         <p className="NoListBackground__rightText">
           &#10088;<span className="NoListBackground__emoji">T_T</span>&#10089;
         </p>
-      </p>
+      </div>
     </section>
   );
 }
