@@ -1,0 +1,14 @@
+@use "../../util" as u;
+
+.UpperBar__toDoBox {
+  height: 70px;
+
+  border-bottom: 2px solid rgba(70, 39, 48, 0.8);
+  background-color: u.$dark-900;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}

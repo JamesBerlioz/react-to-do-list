@@ -1,0 +1,11 @@
+@use "../../util" as u;
+@use "../../util/mixins" as m;
+
+.NoListBackground__text {
+  @include m.typography(20px, 400, u.$second-200);
+
+  position: absolute;
+  display: flex;
+
+  top: 380px;
+}

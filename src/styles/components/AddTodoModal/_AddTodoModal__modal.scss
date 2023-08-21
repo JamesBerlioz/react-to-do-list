@@ -1,0 +1,13 @@
+@use "../../util/mixins" as m;
+@use "../../util" as u;
+
+.AddTodoModal__modal {
+  width: 500px;
+  height: 200px;
+
+  background-color: u.$dark-900;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 180, 180, 0.4);
+
+  transition: 0.5s;
+}

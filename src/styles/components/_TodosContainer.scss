@@ -1,0 +1,29 @@
+@use "../util" as u;
+
+.TodosContainer {
+  width: 80%;
+  height: 540px;
+
+  position: relative;
+  top: 20px;
+
+  background-color: u.$dark-900;
+
+  margin: 0px auto;
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: u.$dark-600 u.$dark-900;
+}
+
+.TodosContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.TodosContainer::-webkit-scrollbar-thumb {
+  background: u.$dark-600;
+}
+
+.TodosContainer::-webkit-scrollbar-track {
+  background: u.$dark-900;
+}

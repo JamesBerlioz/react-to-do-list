@@ -5,9 +5,25 @@
   height: 540px;
 
   position: relative;
-  top: 40px;
+  top: 20px;
 
   background-color: u.$dark-900;
 
   margin: 0px auto;
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: u.$dark-600 u.$dark-900;
+}
+
+.ListContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ListContainer::-webkit-scrollbar-thumb {
+  background: u.$dark-600;
+}
+
+.ListContainer::-webkit-scrollbar-track {
+  background: u.$dark-900;
 }

@@ -1,0 +1,8 @@
+@use "../../util/mixins" as m;
+@use "../../util" as u;
+
+.AddTodoModal__title {
+  @include m.typography(24px, 400);
+
+  margin-left: 20px;
+}

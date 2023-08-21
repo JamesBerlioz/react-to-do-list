@@ -1,0 +1,8 @@
+@use "../../util" as u;
+@use "../../util/mixins" as m;
+
+.Todo__text {
+  @include m.typography(16px, 400, u.$second-200);
+
+  margin-left: 15px;
+}

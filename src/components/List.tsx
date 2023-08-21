@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import ArrowIcon from "./icons/Arrow";
 import TrashIcon from "./icons/Trash";
-import { useAppSelector, useAppDispatch } from "./hooks/reduxHook";
+import { useAppDispatch } from "./hooks/reduxHook";
 import { removeTitle } from "../features/DataSlice";
+import { useNavigate } from "react-router-dom";
 
-function List({ id }: { id: string }) {
+function List({ id, title }: { id: string; title: string }) {
   const dispatch = useAppDispatch();
+  let navigate = useNavigate();
 
-  const [isTrashShown, setIsTrashShown] = useState(false);
-  const showTrash = () => setIsTrashShown(true);
-  const hideTrash = () => setIsTrashShown(false);
+  const [isTrashShown, toggleTrashShown] = useReducer(
+    (isTrashShown) => !isTrashShown,
+    false
+  );
 
-  const [isActive, setIsActive] = useState(false);
-  const setActive = () => setIsActive(true);
-  const setInactive = () => setIsActive(false);
+  const [isActive, toggleActive] = useReducer((isActive) => !isActive, false);
 
   const removeList = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
@@ -21,22 +22,23 @@ function List({ id }: { id: string }) {
   };
 
   return (
-    <button
+    <section
       className="List"
-      onMouseEnter={setActive}
-      onMouseLeave={setInactive}
+      onMouseEnter={toggleActive}
+      onMouseLeave={toggleActive}
+      onClick={() => navigate(`/${id}`)}
     >
       <div
         className="List__trash"
-        onMouseEnter={showTrash}
-        onMouseLeave={hideTrash}
-        onClick={(e) => removeList(e)}
+        onMouseEnter={toggleTrashShown}
+        onMouseLeave={toggleTrashShown}
+        onClick={removeList}
       >
-        {isTrashShown && <TrashIcon />}
+        {isTrashShown && <TrashIcon active={false} size={"32px"} />}
       </div>
-      <p className="List__title">😐 New List</p>
+      <p className="List__title">😐 {title}</p>
       <ArrowIcon className="List__todos" active={isActive} />
-    </button>
+    </section>
   );
 }
 

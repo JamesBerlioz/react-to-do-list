@@ -1,0 +1,19 @@
+@use "../../util" as u;
+
+.Todo {
+  width: 99.5%;
+  height: 60px;
+
+  background: u.$dark-800;
+
+  margin-top: 15px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Todo:hover {
+  background: u.$dark-700;
+}

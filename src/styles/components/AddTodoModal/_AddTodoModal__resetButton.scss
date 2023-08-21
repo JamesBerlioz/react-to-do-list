@@ -1,0 +1,17 @@
+@use "../../util" as u;
+
+.AddTodoModal__resetButton {
+  height: 50px;
+  width: 50px;
+
+  margin-right: 20px;
+  border-radius: 50%;
+  border: none;
+
+  background-color: u.$dark-900;
+}
+
+.AddTodoModal__resetButton:hover {
+  background-color: u.$dark-700;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.UpperBar__right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.UpperBar__right > :nth-child(1) {
+  margin-right: 60px;
+}
+
+.UpperBar__right > :nth-child(2) {
+  margin-right: 30px;
+}

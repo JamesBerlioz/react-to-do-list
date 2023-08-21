@@ -2,20 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 
-interface List {
+export interface List {
   id: string;
   title: string;
-  todos: string[];
+  todos: { text: string; completed: boolean }[];
+}
+
+interface addTodoTypes {
+  id: string;
+  text: string;
+}
+
+interface completeTodoTypes {
+  id: string;
+  index: number;
 }
 
 export interface DataState {
   data: List[];
-  dataIsEmpty: boolean;
 }
 
 const initialState: DataState = {
-  data: [],
-  dataIsEmpty: true,
+  data: JSON.parse(window.localStorage.getItem("data") || "[]"),
 };
 
 export const DataSlice = createSlice({
@@ -27,20 +35,55 @@ export const DataSlice = createSlice({
         ...state.data,
         { id: v4(), title: action.payload, todos: [] },
       ];
-      console.log(state.data);
     },
     removeTitle: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((list) => list.id !== action.payload);
     },
-    dataIsEmpty: (state) => {
-      state.data.length === 0
-        ? (state.dataIsEmpty = true)
-        : (state.dataIsEmpty = false);
+    addTodo: (state, action: PayloadAction<addTodoTypes>) => {
+      state.data = state.data.map((list) =>
+        list.id === action.payload.id
+          ? {
+              ...list,
+              todos: [
+                ...list.todos,
+                { text: action.payload.text, completed: false },
+              ],
+            }
+          : list
+      );
+    },
+    completeTodo: (state, action: PayloadAction<completeTodoTypes>) => {
+      state.data = state.data.map((list) =>
+        list.id === action.payload.id
+          ? {
+              ...list,
+              todos: list.todos.map((todo, i) =>
+                i === action.payload.index
+                  ? {
+                      ...todo,
+                      completed: !todo.completed,
+                    }
+                  : todo
+              ),
+            }
+          : list
+      );
+    },
+    removeTodo: (state, action: PayloadAction<completeTodoTypes>) => {
+      state.data = state.data.map((list) =>
+        list.id === action.payload.id
+          ? {
+              ...list,
+              todos: list.todos.filter((todo, i) => i !== action.payload.index),
+            }
+          : list
+      );
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTitle, removeTitle } = DataSlice.actions;
+export const { addTitle, removeTitle, addTodo, completeTodo, removeTodo } =
+  DataSlice.actions;
 
 export default DataSlice.reducer;

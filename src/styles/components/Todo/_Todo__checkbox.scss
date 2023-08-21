@@ -1,0 +1,9 @@
+@use "../../util" as u;
+
+.Todo__checkbox {
+  margin-left: 32px;
+}
+
+.Todo__checkbox:hover {
+  cursor: pointer;
+}
