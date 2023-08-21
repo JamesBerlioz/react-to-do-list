@@ -1,0 +1,36 @@
+@use "../util" as u;
+
+.SelectEmoji {
+  width: 40px;
+  height: 40px;
+
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 25px;
+  cursor: pointer;
+  line-height: inherit;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.SelectEmoji::-ms-expand {
+  display: none;
+}
+
+.SelectEmoji > * {
+  background-color: u.$dark-900;
+  text-align: center;
+
+  border: none;
+  outline: none;
+
+  align-self: center;
+  justify-self: center;
+}

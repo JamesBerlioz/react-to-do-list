@@ -7,7 +7,7 @@ function ListContainer() {
   return (
     <div className={"ListContainer"}>
       {data.map((list) => (
-        <List key={list.id} id={list.id} title={list.title} />
+        <List key={list.id} id={list.id} title={list.title} emoji={list.emoji} />
       ))}
     </div>
   );

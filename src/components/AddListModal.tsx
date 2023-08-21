@@ -5,26 +5,24 @@ import { hide, changeValue } from "../features/AddListModalSlice";
 import { useEffect, useRef, useState } from "react";
 import useOutsideAlerter from "./hooks/outsideAlerter";
 import { addTitle } from "../features/DataSlice";
+import SelectEmoji from "./SelectEmoji";
 
 function AddListModal() {
   const isShown = useAppSelector((state) => state.addListModal.isShown);
   const inputValue = useAppSelector((state) => state.addListModal.inputValue);
+  const selectedEmoji = useAppSelector((state) => state.addListModal.selectedEmoji);
   const dispatch = useAppDispatch();
 
   const submit = (
-    e:
-      | React.MouseEvent<HTMLButtonElement, MouseEvent>
-      | React.FormEvent<HTMLFormElement>
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
     if (inputValue) {
-      dispatch(addTitle(inputValue));
+      dispatch(addTitle({ title: inputValue, emoji: selectedEmoji }));
       dispatch(hide());
       removeWarning();
     } else {
-      setInputClassList(
-        ["AddListModal__input", "AddListModal__input_warning"].join(" ")
-      );
+      setInputClassList(["AddListModal__input", "AddListModal__input_warning"].join(" "));
     }
   };
 
@@ -59,15 +57,13 @@ function AddListModal() {
         <div className="AddListModal__modal" ref={modalRef}>
           <div className="AddListModal__header">
             <p className="AddListModal__title">ADD NEW LIST</p>
-            <button
-              className="AddListModal__resetButton"
-              onClick={() => cancel()}
-            >
+            <button className="AddListModal__resetButton" onClick={() => cancel()}>
               <CancelIcon />
             </button>
           </div>
           <form className="AddListModal__form" onSubmit={(e) => submit(e)}>
             <div className="AddListModal__body">
+              <SelectEmoji />
               <input
                 value={inputValue}
                 onChange={(e) => onChange(e)}

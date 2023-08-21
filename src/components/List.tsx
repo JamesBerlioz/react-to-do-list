@@ -5,7 +5,7 @@ import { useAppDispatch } from "./hooks/reduxHook";
 import { removeTitle } from "../features/DataSlice";
 import { useNavigate } from "react-router-dom";
 
-function List({ id, title }: { id: string; title: string }) {
+function List({ id, title, emoji }: { id: string; title: string; emoji: string }) {
   const dispatch = useAppDispatch();
   let navigate = useNavigate();
 
@@ -37,7 +37,9 @@ function List({ id, title }: { id: string; title: string }) {
       >
         {isTrashShown && <TrashIcon active={false} size={"32px"} />}
       </div>
-      <p className="List__title">😐 {title}</p>
+      <p className="List__title">
+        {emoji ? emoji : "😐"} {title}
+      </p>
       <ArrowIcon className="List__todos" active={isActive} />
     </section>
   );

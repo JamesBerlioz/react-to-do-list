@@ -5,6 +5,7 @@ import { v4 } from "uuid";
 export interface List {
   id: string;
   title: string;
+  emoji: string;
   todos: { text: string; completed: boolean }[];
 }
 
@@ -32,10 +33,10 @@ export const DataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {
-    addTitle: (state, action: PayloadAction<string>) => {
+    addTitle: (state, action: PayloadAction<{ title: string; emoji: string }>) => {
       state.data = [
         ...state.data,
-        { id: v4(), title: action.payload, todos: [] },
+        { id: v4(), title: action.payload.title, emoji: action.payload.emoji, todos: [] },
       ];
     },
     removeTitle: (state, action: PayloadAction<string>) => {
@@ -47,10 +48,7 @@ export const DataSlice = createSlice({
         list.id === action.payload.id
           ? {
               ...list,
-              todos: [
-                ...list.todos,
-                { text: action.payload.text, completed: false },
-              ],
+              todos: [...list.todos, { text: action.payload.text, completed: false }],
             }
           : list
       );
@@ -86,7 +84,6 @@ export const DataSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addTitle, removeTitle, addTodo, completeTodo, removeTodo } =
-  DataSlice.actions;
+export const { addTitle, removeTitle, addTodo, completeTodo, removeTodo } = DataSlice.actions;
 
 export default DataSlice.reducer;

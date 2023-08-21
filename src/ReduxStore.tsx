@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter/counterSlice";
 import addListModalSliceReducer from "./features/AddListModalSlice";
 import AddTodoModalSliceReducer from "./features/AddTodoModalSlice";
 import dataSlice from "./features/DataSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     addListModal: addListModalSliceReducer,
     addTodoModal: AddTodoModalSliceReducer,
     data: dataSlice,

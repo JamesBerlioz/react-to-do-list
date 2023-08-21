@@ -28,7 +28,9 @@ function UpperBar({ currentList, animation }: { currentList?: List; animation?: 
             >
               <ArroLeftIcon active={isActive} />
             </button>
-            <p className="UpperBar__text">😐 {currentList.title}</p>
+            <p className="UpperBar__text">
+              {currentList.emoji ? currentList.emoji : "😐"} {currentList.title}
+            </p>
           </div>
           <div className="UpperBar__right">
             <DeleteListButton id={currentList.id} />
