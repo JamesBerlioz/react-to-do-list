@@ -11,10 +11,11 @@ function SelectEmoji() {
       value={selectedEmoji}
       onChange={(e) => dispatch(changeEmoji(e.target.value))}
     >
-      <option value="&#128512;">&#128512;</option>
-      <option value=" &#128516;"> &#128516;</option>
+      <option value="&#128528;">&#128528;</option>
+      <option value="&#128578;">&#128578;</option>
+      <option value="&#128577;">&#128577;</option>
       <option value="&#128525;">&#128525;</option>
-      <option value=" &#128151;"> &#128151;</option>
+      <option value="&#128545;">&#128545;</option>
     </select>
   );
 }

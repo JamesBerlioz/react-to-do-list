@@ -22,11 +22,13 @@ interface completeTodoTypes {
 export interface DataState {
   data: List[];
   noList: boolean;
+  dataHasChanged: boolean;
 }
 
 const initialState: DataState = {
   data: JSON.parse(window.localStorage.getItem("data") || "[]"),
   noList: false,
+  dataHasChanged: false,
 };
 
 export const DataSlice = createSlice({
@@ -38,6 +40,7 @@ export const DataSlice = createSlice({
         ...state.data,
         { id: v4(), title: action.payload.title, emoji: action.payload.emoji, todos: [] },
       ];
+      state.dataHasChanged = true;
     },
     removeTitle: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((list) => list.id !== action.payload);
@@ -52,6 +55,7 @@ export const DataSlice = createSlice({
             }
           : list
       );
+      state.dataHasChanged = true;
     },
     completeTodo: (state, action: PayloadAction<completeTodoTypes>) => {
       state.data = state.data.map((list) =>
@@ -80,10 +84,14 @@ export const DataSlice = createSlice({
           : list
       );
     },
+    updateDataStatus: (state) => {
+      state.dataHasChanged = false;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addTitle, removeTitle, addTodo, completeTodo, removeTodo } = DataSlice.actions;
+export const { addTitle, removeTitle, addTodo, completeTodo, removeTodo, updateDataStatus } =
+  DataSlice.actions;
 
 export default DataSlice.reducer;
