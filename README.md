@@ -1,4 +1,4 @@
-##TO DO LIST
+## TO DO LIST
 This app was built with react, react-router,
 redux for data exchange,
 typescript for type checking
